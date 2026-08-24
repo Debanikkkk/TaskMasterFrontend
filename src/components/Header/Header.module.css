@@ -1,0 +1,292 @@
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px 32px 8px;
+  font-family: "Inter", system-ui, sans-serif;
+  flex-wrap: wrap;
+}
+
+.titleBlock {
+  min-width: 260px;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 8px;
+  letter-spacing: -0.3px;
+}
+
+.greeting {
+  font-size: 15px;
+  font-weight: 600;
+  color: #e5e7f5;
+  margin: 0 0 2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.wave {
+  font-size: 16px;
+}
+
+.subtitle {
+  font-size: 13.5px;
+  color: #9295b8;
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 10px 14px;
+  min-width: 300px;
+}
+
+.searchIcon {
+  color: #8b8fb0;
+  flex-shrink: 0;
+}
+
+.searchInput {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #e5e7f5;
+  font-size: 13.5px;
+  flex: 1;
+}
+
+.searchInput::placeholder {
+  color: #7d81a3;
+}
+
+.kbd {
+  font-size: 11px;
+  color: #8b8fb0;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  padding: 2px 6px;
+}
+
+.iconButton {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #d3d5ec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #6a5cf5;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #14162b;
+}
+
+.primaryButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #7c6bfa, #4f46e5);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 11px 18px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(8, 10, 24, 0.72);
+  backdrop-filter: blur(6px);
+}
+
+.modal {
+  width: min(100%, 480px);
+  background: #1a1d38;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 26px;
+  color: #fff;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
+}
+
+.modalHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.modalEyebrow {
+  color: #8f91bc;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 7px;
+}
+
+.modalTitle {
+  font-size: 23px;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.closeButton,
+.cancelButton {
+  border: 0;
+  cursor: pointer;
+}
+
+.closeButton {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  color: #a5a8c6;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+}
+
+.fieldLabel {
+  display: block;
+  color: #e8e9f5;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.fieldLabel span {
+  color: #7d81a3;
+  font-weight: 400;
+}
+
+.fieldInput {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font: inherit;
+  font-size: 13px;
+  outline: none;
+  padding: 12px 13px;
+  margin-bottom: 18px;
+  resize: vertical;
+}
+
+.fieldInput:focus {
+  border-color: #8174fb;
+  box-shadow: 0 0 0 3px rgba(129, 116, 251, 0.16);
+}
+
+.fieldInput::placeholder {
+  color: #73779e;
+}
+
+.colorField {
+  border: 0;
+  padding: 0;
+  margin: 0 0 26px;
+}
+
+.colorOptions {
+  display: flex;
+  gap: 11px;
+}
+
+.colorButton {
+  width: 28px;
+  height: 28px;
+  border: 3px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.colorButtonSelected {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.cancelButton,
+.submitButton {
+  border-radius: 10px;
+  padding: 11px 16px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.cancelButton {
+  color: #b3b5d0;
+  background: transparent;
+}
+
+.submitButton {
+  border: 0;
+  color: #fff;
+  background: linear-gradient(135deg, #7c6bfa, #4f46e5);
+  cursor: pointer;
+}
+
+@media (max-width: 720px) {
+  .header {
+    padding-inline: 20px;
+  }
+
+  .actions {
+    width: 100%;
+  }
+
+  .searchBox {
+    min-width: 0;
+    flex: 1;
+  }
+}

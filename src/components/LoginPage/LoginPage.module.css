@@ -1,0 +1,429 @@
+.page {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  padding: 2.5rem 1rem;
+  box-sizing: border-box;
+  background: #0f172a;
+  color: #fff;
+}
+
+.backgroundImage,
+.backgroundTint {
+  position: absolute;
+  inset: 0;
+}
+
+.backgroundImage {
+  background-position: center;
+  background-size: cover;
+}
+
+.backgroundTint {
+  background: linear-gradient(135deg, rgba(30, 27, 75, 0.88), rgba(15, 23, 42, 0.82) 50%, rgba(2, 6, 23, 0.92));
+}
+
+.brand,
+.securityNote,
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.brand {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.brandMark,
+.cardIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #818cf8, #7c3aed);
+  box-shadow: 0 10px 24px rgba(30, 27, 75, 0.4);
+}
+
+.brandMark {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.75rem;
+}
+
+.brandIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #fff;
+}
+
+.smallIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.brandName {
+  color: #fff;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  width: 100%;
+  max-width: 64rem;
+}
+
+.logoutMessage {
+  position: fixed;
+  top: 1.5rem;
+  left: 50%;
+  z-index: 2;
+  transform: translateX(-50%);
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(167, 243, 208, 0.35);
+  border-radius: 0.75rem;
+  color: #d1fae5;
+  background: rgba(6, 78, 59, 0.8);
+  font-size: 0.875rem;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  max-width: 28rem;
+}
+
+.introTitle {
+  margin: 0;
+  color: #fff;
+  font-size: 3rem;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.introAccent {
+  color: #c4b5fd;
+}
+
+.introDescription {
+  margin-top: 1.25rem;
+  color: #cbd5e1;
+  font-size: 1.125rem;
+  line-height: 1.625;
+}
+
+.features {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.featureIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #a5b4fc;
+}
+
+.featureLabel {
+  color: #e2e8f0;
+  font-size: 0.9375rem;
+}
+
+.quote {
+  margin: 3.5rem 0 0;
+  padding-left: 1rem;
+  border-left: 2px solid rgba(129, 140, 248, 0.6);
+  color: #cbd5e1;
+  font-size: 0.9375rem;
+  font-style: italic;
+  line-height: 1.625;
+}
+
+.card {
+  width: 100%;
+  max-width: 28rem;
+  margin: 0;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(24px);
+  box-sizing: border-box;
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.cardIconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.cardIcon {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.75rem;
+  box-shadow: none;
+}
+
+.cardTitle {
+  margin: 0;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.cardSubtitle,
+.signupText {
+  color: #cbd5e1;
+  font-size: 0.875rem;
+}
+
+.cardSubtitle {
+  margin-top: 0.25rem;
+}
+
+.divider,
+.dividerLine {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.divider {
+  margin: 1.5rem 0;
+}
+
+.form {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.375rem;
+  color: #f1f5f9;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.inputWrap {
+  position: relative;
+}
+
+.inputIcon {
+  position: absolute;
+  top: 50%;
+  left: 0.875rem;
+  width: 1rem;
+  height: 1rem;
+  transform: translateY(-50%);
+  color: #cbd5e1;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.75rem;
+  outline: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font: inherit;
+  font-size: 0.875rem;
+  box-sizing: border-box;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.input::placeholder {
+  color: #94a3b8;
+}
+
+.input:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.6);
+}
+
+.passwordInput {
+  padding-right: 2.75rem;
+}
+
+.passwordToggle {
+  position: absolute;
+  top: 50%;
+  right: 0.875rem;
+  display: flex;
+  padding: 0;
+  border: 0;
+  transform: translateY(-50%);
+  background: transparent;
+  color: #cbd5e1;
+  cursor: pointer;
+}
+
+.passwordToggle:hover {
+  color: #fff;
+}
+
+.formOptions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  color: #e2e8f0;
+  font-size: 0.875rem;
+}
+
+.checkbox {
+  width: 1rem;
+  height: 1rem;
+  accent-color: #6366f1;
+  cursor: pointer;
+}
+
+.link {
+  color: #c4b5fd;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.link:hover {
+  color: #ddd6fe;
+}
+
+.submitButton,
+.googleButton {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  color: #fff;
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.submitButton {
+  border: 0;
+  background: linear-gradient(90deg, #6366f1, #7c3aed);
+  box-shadow: 0 10px 20px rgba(30, 27, 75, 0.4);
+  font-weight: 600;
+}
+
+.submitButton:hover {
+  background: linear-gradient(90deg, #818cf8, #8b5cf6);
+}
+
+.socialDivider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.dividerLine {
+  flex: 1;
+}
+
+.dividerLabel {
+  color: #94a3b8;
+  font-size: 0.75rem;
+}
+
+.googleButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  font-weight: 500;
+}
+
+.googleButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.signupText {
+  margin: 1.5rem 0 0;
+  text-align: center;
+}
+
+.securityNote {
+  position: absolute;
+  right: 0;
+  bottom: 1.5rem;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: #cbd5e1;
+  font-size: 0.75rem;
+}
+
+@media (max-width: 1023px) {
+  .intro {
+    display: none;
+  }
+
+  .content {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 5rem 1rem 4.5rem;
+  }
+
+  .brand {
+    top: 1.5rem;
+    left: 1.5rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .formOptions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
