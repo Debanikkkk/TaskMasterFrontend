@@ -53,7 +53,7 @@ const LoginPage = () => {
             </span>
           </h1>
           <p className={styles.introDescription}>
-            Manage projects, tasks and bugs in one beautiful workspace.
+            Manage projects and tasks in one beautiful workspace.
           </p>
 
           <div className={styles.features}>
@@ -72,11 +72,13 @@ const LoginPage = () => {
         {/* Login card */}
         <div className={styles.card}>
           <div className={styles.cardHeader}>
-            <div className={styles.cardIconWrap}>
+            {/* <div className={styles.cardIconWrap}>
               <div className={styles.cardIcon}>
                 <Layers className={styles.brandIcon} strokeWidth={2.5} />
               </div>
-            </div>
+            </div> */}
+                <img src={TaskMasterLogo} style={{width:'100px'}}alt="" />
+
             <h2 className={styles.cardTitle}>Welcome Back</h2>
             <p className={styles.cardSubtitle}>Sign in to continue to your workspace</p>
           </div>

@@ -1,4 +1,4 @@
-import { CheckSquare, Users } from "lucide-react";
+import { CheckSquare } from "lucide-react";
 import Card from "../Card/Card";
 import { Link } from "react-router-dom";
 import styles from "./WorkspaceCard.module.css";
@@ -11,8 +11,6 @@ const WorkspaceCard = ({
   progress = 0,
   progressColor = "#6a5cf5",
   tasks = 0,
-
-  members = 0,
   workspaceId,
   onOpen,
 }) => {
@@ -39,19 +37,14 @@ const WorkspaceCard = ({
         />
       </div>
 
-      <div className={styles.statsRow}>
+      {/* <div className={styles.statsRow}>
         <div className={styles.stat}>
           <CheckSquare size={14} className={styles.statIcon} />
           <span className={styles.statValue}>{tasks}</span>
           <span className={styles.statLabel}>Tasks</span>
         </div>
 
-        <div className={styles.stat}>
-          <Users size={14} className={styles.statIcon} />
-          <span className={styles.statValue}>{members}</span>
-          <span className={styles.statLabel}>Members</span>
-        </div>
-      </div>
+      </div> */}
 
       </Card>
     </Link>

@@ -6,19 +6,17 @@ import Header from "../Header/Header";
 import Card from "../Card/Card";
 import TaskModal from "../TaskModal/TaskModal";
 import TaskFilters from "../TaskFilters/TaskFilters";
-import { initialWorkspaces, tasks } from "../data";
 import styles from "../Dashboard/Dashboard.module.css";
 import TaskComp from "../TaskComp/TaskComp";
 
 
-const WorkspacePage = () => {
+const WorkspacePage = ({ workspaces, tasks, setTasks }) => {
   const { workspaceId } = useParams();
   const [taskFilter, setTaskFilter] = useState("All");
   const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
-  const [workspaceTasksState, setWorkspaceTasksState] = useState(tasks);
   const [newTask, setNewTask] = useState({ title: "", description: "", status: "Todo", priority: "Medium", due: "" });
-  const workspace = initialWorkspaces.find((item) => String(item.id) === workspaceId);
-  const workspaceTasks = workspaceTasksState.filter((task) => task.workspaceId === workspace?.id);
+  const workspace = workspaces.find((item) => String(item.id) === workspaceId);
+  const workspaceTasks = tasks.filter((task) => task.workspaceId === workspace?.id);
   const visibleTasks = taskFilter === "All"
     ? workspaceTasks
     : workspaceTasks.filter((task) => task.status === taskFilter);
@@ -31,7 +29,7 @@ const WorkspacePage = () => {
   };
 
   const handleStatusChange = (taskId, status) => {
-    setWorkspaceTasksState((currentTasks) => currentTasks.map((task) => (
+    setTasks((currentTasks) => currentTasks.map((task) => (
       task.id === taskId ? { ...task, status } : task
     )));
   };
@@ -52,10 +50,11 @@ const WorkspacePage = () => {
 
   const handleTaskSubmit = (event) => {
     event.preventDefault();
-    setWorkspaceTasksState((currentTasks) => [
+    setTasks((currentTasks) => [
       ...currentTasks,
       {
         id: Date.now(),
+        workspaceId: workspace.id,
         title: newTask.title.trim(),
         workspace: workspace.title,
         status: newTask.status,
@@ -70,7 +69,7 @@ const WorkspacePage = () => {
   if (!workspace) {
     return (
       <div className={styles.page}>
-        <Sidebar workspaces={initialWorkspaces} />
+        <Sidebar workspaces={workspaces} />
         <main className={styles.main}>
           <Header />
           <div className={styles.content}>
@@ -91,7 +90,7 @@ const WorkspacePage = () => {
 
   return (
     <div className={styles.page}>
-      <Sidebar workspaces={initialWorkspaces} />
+      <Sidebar workspaces={workspaces} />
       <main className={styles.main}>
         <Header title={workspace.title} subtitle="Everything happening in this workspace." />
         <div className={styles.content}>

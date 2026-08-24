@@ -3,12 +3,11 @@ import { Rocket } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import Header from "../Header/Header";
-import WorkspaceCard from "../WorkspaceCard/WorkspaceCard";
-import { initialWorkspaces } from "../data";
+// import WorkspaceCard from "../WorkspaceCard/WorkspaceCard";
 import styles from "./Dashboard.module.css";
+import WorkspaceCard from "../Workspacecard/WorkspaceCard";
 
-const Dashboard = () => {
-  const [workspaces, setWorkspaces] = useState(initialWorkspaces);
+const Dashboard = ({ workspaces, setWorkspaces, tasks }) => {
   const navigate = useNavigate();
 
   const handleOpenWorkspace = (workspaceId) => {
@@ -28,7 +27,6 @@ const Dashboard = () => {
         progressColor: iconBg,
         tasks: 0,
         bugs: 0,
-        members: 1,
         updatedText: "Created just now",
       },
     ]);
@@ -44,7 +42,13 @@ const Dashboard = () => {
         <div className={styles.content}>
           <div className={styles.workspaceGrid}>
             {workspaces.map((w) => (
-              <WorkspaceCard key={w.id} {...w} workspaceId={w.id} onOpen={() => handleOpenWorkspace(w.id)} />
+              <WorkspaceCard
+                key={w.id}
+                {...w}
+                tasks={tasks.filter((task) => task.workspaceId === w.id).length}
+                workspaceId={w.id}
+                onOpen={() => handleOpenWorkspace(w.id)}
+              />
             ))}
           </div>
 
