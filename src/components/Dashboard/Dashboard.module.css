@@ -13,7 +13,7 @@
   z-index: -2;
   content: "";
   background: url("https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1600&auto=format&fit=crop") center / cover no-repeat;
-  filter: blur(5px);
+  filter: blur(1px);
   transform: scale(1.03);
 }
 
@@ -306,7 +306,7 @@
 
 .taskRow {
   display: grid;
-  grid-template-columns: 22px minmax(210px, 1fr) 70px 130px 62px;
+  grid-template-columns: 22px minmax(180px, 1fr) 115px 70px 130px 62px;
   align-items: center;
   gap: 14px;
   min-height: 66px;
@@ -316,6 +316,24 @@
   border-radius: 12px;
   background: rgba(250, 247, 241, 0.58);
   transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.taskStatusSelect {
+  width: 115px;
+  border: 1px solid #d9c8b7;
+  border-radius: 8px;
+  padding: 7px 8px;
+  color: #211a16;
+  background: #f7f1e9;
+  font: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.taskStatusSelect:focus {
+  border-color: #a87557;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(168, 117, 87, 0.14);
 }
 
 .taskRow:hover {
@@ -441,9 +459,13 @@
   }
 
   .taskRow {
-    grid-template-columns: 22px minmax(0, 1fr) 52px;
+    grid-template-columns: 22px minmax(0, 1fr) 105px;
     gap: 10px;
     padding: 0 10px;
+  }
+
+  .taskStatusSelect {
+    width: 105px;
   }
 
   .assignee {

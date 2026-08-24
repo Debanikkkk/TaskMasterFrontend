@@ -11,7 +11,7 @@ export default function WorkspaceCard({
   progress = 0,
   progressColor = "#6a5cf5",
   tasks = 0,
-  bugs = 0,
+
   members = 0,
   workspaceId,
   onOpen,
@@ -45,11 +45,7 @@ export default function WorkspaceCard({
           <span className={styles.statValue}>{tasks}</span>
           <span className={styles.statLabel}>Tasks</span>
         </div>
-        <div className={styles.stat}>
-          <Bug size={14} className={styles.statIcon} />
-          <span className={styles.statValue}>{bugs}</span>
-          <span className={styles.statLabel}>Bugs</span>
-        </div>
+
         <div className={styles.stat}>
           <Users size={14} className={styles.statIcon} />
           <span className={styles.statValue}>{members}</span>

@@ -17,7 +17,7 @@ export default function Header({
       <div className={styles.titleBlock}>
         <h1 className={styles.title}>{title}</h1>
         <p className={styles.greeting}>
-          Good morning, {userFirstName}! <span className={styles.wave}>👋</span>
+          Good morning, {userFirstName}! 
         </p>
         <p className={styles.subtitle}>{subtitle}</p>
       </div>

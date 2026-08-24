@@ -18,7 +18,7 @@ export default function WorkspacePage() {
   const [workspaceTasksState, setWorkspaceTasksState] = useState(tasks);
   const [newTask, setNewTask] = useState({ title: "", description: "", status: "Todo", priority: "Medium", assignee: "Debanik P.", due: "" });
   const workspace = initialWorkspaces.find((item) => String(item.id) === workspaceId);
-  const workspaceTasks = workspaceTasksState.filter((task) => task.workspace === workspace?.title);
+  const workspaceTasks = workspaceTasksState.filter((task) => task.workspaceId === workspace?.id);
   const visibleTasks = taskFilter === "All"
     ? workspaceTasks
     : workspaceTasks.filter((task) => task.status === taskFilter);
@@ -28,6 +28,12 @@ export default function WorkspacePage() {
     todo: taskCount("Todo"),
     inProgress: taskCount("In Progress"),
     done: taskCount("Done"),
+  };
+
+  const handleStatusChange = (taskId, status) => {
+    setWorkspaceTasksState((currentTasks) => currentTasks.map((task) => (
+      task.id === taskId ? { ...task, status } : task
+    )));
   };
 
   useEffect(() => {
@@ -108,7 +114,7 @@ export default function WorkspacePage() {
             <div className={styles.taskList}>
               {visibleTasks.length === 0 && <div className={styles.emptyState}>No tasks in this workspace yet.</div>}
               {visibleTasks.map((task) => {
-                return <TaskComp key={task.id} task={task} />
+                return <TaskComp key={task.id} task={task} onStatusChange={handleStatusChange} />
               })}
             </div>
             </Card>
