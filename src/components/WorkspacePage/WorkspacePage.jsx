@@ -16,7 +16,7 @@ export default function WorkspacePage() {
   const [taskFilter, setTaskFilter] = useState("All");
   const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
   const [workspaceTasksState, setWorkspaceTasksState] = useState(tasks);
-  const [newTask, setNewTask] = useState({ title: "", description: "", status: "Todo", priority: "Medium", assignee: "Debanik P.", due: "" });
+  const [newTask, setNewTask] = useState({ title: "", description: "", status: "Todo", priority: "Medium", due: "" });
   const workspace = initialWorkspaces.find((item) => String(item.id) === workspaceId);
   const workspaceTasks = workspaceTasksState.filter((task) => task.workspaceId === workspace?.id);
   const visibleTasks = taskFilter === "All"
@@ -47,7 +47,7 @@ export default function WorkspacePage() {
 
   const closeTaskModal = () => {
     setIsTaskModalOpen(false);
-    setNewTask({ title: "", description: "", status: "Todo", priority: "Medium", assignee: "Debanik P.", due: "" });
+    setNewTask({ title: "", description: "", status: "Todo", priority: "Medium", due: "" });
   };
 
   const handleTaskSubmit = (event) => {
@@ -58,7 +58,6 @@ export default function WorkspacePage() {
         id: Date.now(),
         title: newTask.title.trim(),
         workspace: workspace.title,
-        assignee: newTask.assignee.trim() || "Unassigned",
         status: newTask.status,
         priority: newTask.priority,
         due: newTask.due || "No due date",

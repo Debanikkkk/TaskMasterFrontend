@@ -37,8 +37,6 @@ export default function TaskModal({ workspaceTitle, newTask, setNewTask, onClose
               </select>
             </div>
           </div>
-          <label className={styles.fieldLabel} htmlFor="task-assignee">Assignee</label>
-          <input id="task-assignee" className={styles.fieldInput} value={newTask.assignee} onChange={(event) => updateTask("assignee", event.target.value)} placeholder="Who owns this task?" />
           <label className={styles.fieldLabel} htmlFor="task-due">Due date</label>
           <input id="task-due" className={styles.fieldInput} type="date" value={newTask.due} onChange={(event) => updateTask("due", event.target.value)} />
           <div className={styles.modalActions}>

@@ -9,11 +9,7 @@ import TaskMasterLogo from '../../assets/TaskMasterLogo.svg'
 
 const navItems = [
   { icon: LayoutGrid, label: "Workspaces", active: true },
-  // { icon: CheckSquare, label: "My Tasks" },
-  // { icon: Calendar, label: "Calendar" },
-  // { icon: Activity, label: "Activity" },
-  // { icon: BarChart3, label: "Reports" },
-  // { icon: Settings, label: "Settings" },
+
 ];
 
 const user = {
@@ -26,7 +22,7 @@ export default function Sidebar({ workspaces = [] }) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    navigate("/", { state: { message: "You have been logged out." } });
+    navigate("/", { state: { message: "You have been logged out." ,} });
   };
 
   return (
