@@ -107,6 +107,8 @@
   border-radius: 10px;
   cursor: pointer;
   transition: background 0.15s ease;
+  color: inherit;
+  text-decoration: none;
 }
 
 .starredItem:hover {
@@ -186,4 +188,52 @@
 .logoutButton:hover {
   color: #f4638a;
   background: rgba(244, 99, 138, 0.12);
+}
+
+.sidebar {
+  background: rgba(250, 247, 241, 0.96);
+  border-right-color: #e5d8c9;
+  color: #4d3b31;
+}
+
+.brandName,
+.userName {
+  color: #3f3028;
+}
+
+.navItem,
+.starredName {
+  color: #806b5d;
+}
+
+.navItem:hover,
+.starredItem:hover {
+  color: #4d3b31;
+  background: #eee4d8;
+}
+
+.navItemActive {
+  color: #fff;
+  background: linear-gradient(135deg, #a87557, #80533d);
+}
+
+.divider {
+  background: #e5d8c9;
+}
+
+.starredLabel,
+.userRole,
+.userChevron {
+  color: #a38d7d;
+}
+
+.userCard {
+  border-color: #e5d8c9;
+  background: rgba(255, 253, 249, 0.7);
+}
+
+.brandName,
+.userName,
+.starredName {
+  color: #211a16;
 }

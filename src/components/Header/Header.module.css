@@ -290,3 +290,66 @@
     flex: 1;
   }
 }
+
+.title,
+.greeting {
+  color: #211a16;
+}
+
+.subtitle,
+.searchIcon,
+.searchInput::placeholder,
+.kbd {
+  color: #8a7567;
+}
+
+.searchBox,
+.iconButton {
+  background: rgba(255, 253, 249, 0.72);
+  border-color: #e5d8c9;
+  color: #6c5547;
+}
+
+.primaryButton,
+.submitButton {
+  background: linear-gradient(135deg, #a87557, #80533d);
+}
+
+.modal {
+  background: #fffdf9;
+  border-color: #e5d8c9;
+  color: #3f3028;
+}
+
+.modalTitle,
+.fieldLabel {
+  color: #211a16;
+}
+
+.modalEyebrow,
+.fieldLabel span {
+  color: #a38d7d;
+}
+
+.fieldInput {
+  background: #f7f1e9;
+  border-color: #e5d8c9;
+  color: #3f3028;
+}
+
+.fieldInput::placeholder,
+.closeButton,
+.cancelButton {
+  color: #8a7567;
+}
+
+.closeButton {
+  background: #eee4d8;
+}
+
+.title,
+.greeting,
+.modalTitle,
+.fieldLabel {
+  color: #211a16;
+}

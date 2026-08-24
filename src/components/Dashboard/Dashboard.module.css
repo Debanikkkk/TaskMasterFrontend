@@ -22,7 +22,153 @@
   inset: 0;
   z-index: -1;
   content: "";
-  background: linear-gradient(160deg, rgba(20, 22, 43, 0.94) 0%, rgba(28, 32, 64, 0.91) 50%, rgba(35, 40, 82, 0.94) 100%);
+  background: linear-gradient(160deg, rgba(250, 247, 241, 0.94) 0%, rgba(244, 237, 226, 0.92) 50%, rgba(235, 225, 211, 0.94) 100%);
+}
+
+.page,
+.main {
+  color: #4d3b31;
+}
+
+.tasksPanel {
+  background: rgba(255, 253, 249, 0.82);
+  border-color: #e5d8c9;
+  box-shadow: 0 12px 30px rgba(110, 83, 58, 0.08);
+}
+
+.workspaceSection {
+  min-width: 0;
+}
+
+.taskTableCard {
+  overflow: hidden;
+}
+
+.sectionTitle,
+.taskDetails strong {
+  color: #211a16;
+}
+
+.addTaskButton {
+  background: linear-gradient(135deg, #a87557, #80533d);
+}
+
+.taskFilters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 62px;
+  padding: 0 24px;
+  border-bottom: 1px solid #eadfd3;
+}
+
+.addTaskButton {
+  background: linear-gradient(135deg, #a87557, #80533d);
+}
+
+.addTaskButton {
+  background: linear-gradient(135deg, #a87557, #80533d);
+}
+
+.taskFilters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 62px;
+  padding: 0 24px;
+  border-bottom: 1px solid #eadfd3;
+}
+
+.filterLabel {
+  color: #6c5547;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.filterSelect,
+.formSelect {
+  appearance: none;
+  border: 1px solid #d9c8b7;
+  border-radius: 9px;
+  background: #f7f1e9;
+  color: #211a16;
+  font: inherit;
+  font-size: 12px;
+  outline: none;
+  cursor: pointer;
+}
+
+.filterSelect {
+  min-width: 170px;
+  padding: 9px 32px 9px 11px;
+  background-image: linear-gradient(45deg, transparent 50%, #8a7567 50%), linear-gradient(135deg, #8a7567 50%, transparent 50%);
+  background-position: calc(100% - 15px) 13px, calc(100% - 11px) 13px;
+  background-repeat: no-repeat;
+  background-size: 4px 4px, 4px 4px;
+}
+
+.formSelect {
+  width: 100%;
+  padding: 11px;
+  margin-bottom: 18px;
+}
+
+.filterSelect:focus,
+.formSelect:focus {
+  border-color: #a87557;
+  box-shadow: 0 0 0 3px rgba(168, 117, 87, 0.14);
+}
+
+.taskFormGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.sectionEyebrow,
+.workspaceDescription,
+.taskDetails span,
+.emptyState,
+.statusIcon,
+.filterButton,
+.assignee,
+.dueDate {
+  color: #8a7567;
+}
+
+.taskFilters {
+  border-color: #eadfd3;
+}
+
+.filterButtonActive {
+  color: #6c4c3b;
+}
+
+.filterButton span {
+  color: #806b5d;
+  background: #eee4d8;
+}
+
+.taskRow {
+  border-color: #eee4d8;
+}
+
+.backButton {
+  color: #806b5d;
+}
+
+.addTaskButton {
+  background: linear-gradient(135deg, #a87557, #80533d);
+}
+
+.sectionTitle,
+.taskDetails strong,
+.filterButtonActive {
+  color: #211a16;
+}
+
+.taskDetails strong {
+  font-weight: 700;
 }
 
 .main {
@@ -279,9 +425,13 @@
   }
 
   .taskFilters {
-    gap: 15px;
-    overflow-x: auto;
+    gap: 10px;
     padding-inline: 18px;
+  }
+
+  .filterSelect {
+    min-width: 0;
+    flex: 1;
   }
 
   .taskRow {
@@ -296,4 +446,9 @@
   .priority {
     text-align: right;
   }
+}
+
+.sectionTitle,
+.taskDetails strong {
+  color: #211a16;
 }

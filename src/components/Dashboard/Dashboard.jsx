@@ -103,7 +103,7 @@ export default function Dashboard() {
 
   return (
     <div className={styles.page}>
-      <Sidebar />
+      <Sidebar workspaces={workspaces} />
 
       <div className={styles.main}>
         <Header onCreateWorkspace={handleCreateWorkspace} />

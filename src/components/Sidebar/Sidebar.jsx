@@ -1,10 +1,5 @@
 import {
   LayoutGrid,
-  CheckSquare,
-  Calendar,
-  Activity,
-  BarChart3,
-  Settings,
   Star,
   ChevronDown,
   LogOut,
@@ -21,20 +16,13 @@ const navItems = [
   // { icon: Settings, label: "Settings" },
 ];
 
-const starredWorkspaces = [
-  { label: "Mobile App Launch", color: "#f4638a", starred: true },
-  { label: "Website Redesign", color: "#4d8dfa", starred: true },
-  { label: "Marketing Campaign", color: "#9061f9" },
-  { label: "Internal Tools", color: "#34c98f" },
-];
-
 const user = {
   name: "Debanik P.",
   role: "Product Designer",
   avatarUrl: "https://i.pravatar.cc/80?img=13",
 };
 
-export default function Sidebar() {
+export default function Sidebar({ workspaces = [] }) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -67,17 +55,17 @@ export default function Sidebar() {
       <div className={styles.starredSection}>
         <span className={styles.starredLabel}>Starred Workspaces</span>
         <ul className={styles.starredList}>
-          {starredWorkspaces.map((w) => (
-            <li key={w.label} className={styles.starredItem}>
+          {workspaces.map((w) => (
+            <Link key={w.id} className={styles.starredItem} to={`/workspace/${w.id}`}>
               <span
                 className={styles.starredDot}
-                style={{ backgroundColor: w.color }}
+                style={{ backgroundColor: w.iconBg }}
               />
-              <span className={styles.starredName}>{w.label}</span>
+              <span className={styles.starredName}>{w.title}</span>
               {w.starred && (
                 <Star size={14} className={styles.starredIcon} fill="#f4b740" strokeWidth={0} />
               )}
-            </li>
+            </Link>
           ))}
         </ul>
       </div>

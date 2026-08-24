@@ -427,3 +427,124 @@
     flex-direction: column;
   }
 }
+
+.page {
+  background: #f3eadf;
+  color: #4d3b31;
+}
+
+.backgroundTint {
+  background: linear-gradient(135deg, rgba(244, 237, 226, 0.88), rgba(250, 247, 241, 0.82) 50%, rgba(224, 207, 188, 0.86));
+}
+
+.brandName,
+.introTitle,
+.cardTitle {
+  color: #211a16;
+}
+
+.introAccent {
+  color: #9d684c;
+}
+
+.introDescription,
+.featureLabel,
+.quote,
+.cardSubtitle,
+.signupText,
+.securityNote,
+.formOptions,
+.label {
+  color: #6f594b;
+}
+
+.featureIcon {
+  border-color: #dfcfbe;
+  background: rgba(255, 253, 249, 0.65);
+  color: #a87557;
+}
+
+.quote {
+  border-left-color: #b58a6d;
+}
+
+.card {
+  border-color: #dfcfbe;
+  background: rgba(255, 253, 249, 0.78);
+  box-shadow: 0 25px 50px -12px rgba(110, 83, 58, 0.22);
+}
+
+.cardIconWrap {
+  border-color: #dfcfbe;
+  background: #eee4d8;
+}
+
+.brandMark,
+.cardIcon {
+  background: linear-gradient(135deg, #b58a6d, #80533d);
+  box-shadow: 0 10px 24px rgba(110, 83, 58, 0.2);
+}
+
+.divider,
+.dividerLine {
+  background: #dfcfbe;
+}
+
+.input {
+  border-color: #dfcfbe;
+  background: rgba(255, 253, 249, 0.72);
+  color: #3f3028;
+}
+
+.inputIcon,
+.passwordToggle {
+  color: #a38d7d;
+}
+
+.input::placeholder,
+.dividerLabel {
+  color: #a38d7d;
+}
+
+.input:focus {
+  box-shadow: 0 0 0 2px rgba(168, 117, 87, 0.55);
+}
+
+.link {
+  color: #9d684c;
+}
+
+.link:hover {
+  color: #80533d;
+}
+
+.submitButton {
+  background: linear-gradient(90deg, #a87557, #80533d);
+  box-shadow: 0 10px 20px rgba(110, 83, 58, 0.22);
+}
+
+.submitButton:hover {
+  background: linear-gradient(90deg, #b58a6d, #9d684c);
+}
+
+.googleButton {
+  border-color: #dfcfbe;
+  color: #5e493d;
+  background: rgba(255, 253, 249, 0.7);
+}
+
+.googleButton:hover {
+  background: #f7f1e9;
+}
+
+.logoutMessage {
+  border-color: #b8dbc8;
+  color: #276348;
+  background: rgba(224, 242, 230, 0.92);
+}
+
+.introTitle,
+.cardTitle,
+.brandName {
+  color: #211a16;
+}
