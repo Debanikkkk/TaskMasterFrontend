@@ -4,7 +4,7 @@ import styles from "./LoginPage.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import TaskMasterLogo from '../../assets/TaskMasterLogo.svg'
 
-export default function LoginPage() {
+const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -153,7 +153,9 @@ export default function LoginPage() {
       </div>
     </div>
   );
-}
+};
+
+export default LoginPage;
 
 function Feature({ icon, label }) {
   return (

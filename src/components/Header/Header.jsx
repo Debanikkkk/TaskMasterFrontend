@@ -3,12 +3,12 @@ import { Search, Plus } from "lucide-react";
 import CreateWorkspaceModal from "../CreateWorkspaceModal/CreateWorkspaceModal";
 import styles from "./Header.module.css";
 
-export default function Header({
+const Header = ({
   title = "Workspaces",
   userFirstName = "Debanik",
   subtitle = "Here's what's happening with your projects today.",
   onCreateWorkspace,
-}) {
+}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -46,4 +46,6 @@ export default function Header({
     )}
     </>
   );
-}
+};
+
+export default Header;

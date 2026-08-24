@@ -11,7 +11,7 @@ import styles from "../Dashboard/Dashboard.module.css";
 import TaskComp from "../TaskComp/TaskComp";
 
 
-export default function WorkspacePage() {
+const WorkspacePage = () => {
   const { workspaceId } = useParams();
   const [taskFilter, setTaskFilter] = useState("All");
   const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
@@ -131,4 +131,6 @@ export default function WorkspacePage() {
       </main>
     </div>
   );
-}
+};
+
+export default WorkspacePage;

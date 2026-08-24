@@ -1,9 +1,9 @@
-import { CheckSquare, Bug, Users } from "lucide-react";
+import { CheckSquare, Users } from "lucide-react";
 import Card from "../Card/Card";
 import { Link } from "react-router-dom";
 import styles from "./WorkspaceCard.module.css";
 
-export default function WorkspaceCard({
+const WorkspaceCard = ({
   icon: Icon,
   iconBg = "#6a5cf5",
   title,
@@ -15,7 +15,7 @@ export default function WorkspaceCard({
   members = 0,
   workspaceId,
   onOpen,
-}) {
+}) => {
   return (
     <Link className={styles.link} to={`/workspace/${workspaceId}`} onClick={onOpen}>
       <Card className={styles.card}>
@@ -56,4 +56,6 @@ export default function WorkspaceCard({
       </Card>
     </Link>
   );
-}
+};
+
+export default WorkspaceCard;

@@ -18,7 +18,7 @@ const user = {
   avatarUrl: "https://i.pravatar.cc/80?img=13",
 };
 
-export default function Sidebar({ workspaces = [] }) {
+const Sidebar = ({ workspaces = [] }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -76,4 +76,6 @@ export default function Sidebar({ workspaces = [] }) {
       </div>
     </aside>
   );
-}
+};
+
+export default Sidebar;

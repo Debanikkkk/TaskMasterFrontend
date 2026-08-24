@@ -7,7 +7,7 @@ import WorkspaceCard from "../WorkspaceCard/WorkspaceCard";
 import { initialWorkspaces } from "../data";
 import styles from "./Dashboard.module.css";
 
-export default function Dashboard() {
+const Dashboard = () => {
   const [workspaces, setWorkspaces] = useState(initialWorkspaces);
   const navigate = useNavigate();
 
@@ -52,4 +52,6 @@ export default function Dashboard() {
       </div>
     </div>
   );
-}
+};
+
+export default Dashboard;

@@ -5,7 +5,7 @@ import styles from "../Header/Header.module.css";
 
 const workspaceColors = ["#f4638a", "#4d8dfa", "#8a6bf5", "#34c98f", "#f4b740"];
 
-export default function CreateWorkspaceModal({ onClose, onCreateWorkspace }) {
+const CreateWorkspaceModal = ({ onClose, onCreateWorkspace }) => {
   const [workspaceName, setWorkspaceName] = useState("");
   const [description, setDescription] = useState("");
   const [selectedColor, setSelectedColor] = useState(workspaceColors[0]);
@@ -60,4 +60,6 @@ export default function CreateWorkspaceModal({ onClose, onCreateWorkspace }) {
       </div>,
       document.getElementById("portal-root"),
     );
-}
+};
+
+export default CreateWorkspaceModal;

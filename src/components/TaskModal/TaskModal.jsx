@@ -3,7 +3,7 @@ import { X } from "lucide-react";
 import styles from "../Header/Header.module.css";
 import pageStyles from "../Dashboard/Dashboard.module.css";
 
-export default function TaskModal({ workspaceTitle, newTask, setNewTask, onClose, onSubmit }) {
+const TaskModal = ({ workspaceTitle, newTask, setNewTask, onClose, onSubmit }) => {
   const updateTask = (field, value) => {
     setNewTask({ ...newTask, [field]: value });
   };
@@ -48,4 +48,6 @@ export default function TaskModal({ workspaceTitle, newTask, setNewTask, onClose
     </div>,
     document.getElementById("portal-root"),
   );
-}
+};
+
+export default TaskModal;

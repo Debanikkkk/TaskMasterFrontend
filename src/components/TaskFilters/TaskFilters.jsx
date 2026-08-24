@@ -1,6 +1,6 @@
 import styles from "../Dashboard/Dashboard.module.css";
 
-export default function TaskFilters({ value, onChange, counts }) {
+const TaskFilters = ({ value, onChange, counts }) => {
   return (
     <div className={styles.taskFilters}>
       <label className={styles.filterLabel} htmlFor="task-status-filter">
@@ -19,4 +19,6 @@ export default function TaskFilters({ value, onChange, counts }) {
       </select>
     </div>
   );
-}
+};
+
+export default TaskFilters;
