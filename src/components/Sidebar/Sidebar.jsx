@@ -1,12 +1,12 @@
 import {
   LayoutGrid,
-  Star,
   ChevronDown,
   LogOut,
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Sidebar.module.css";
-import TaskMasterLogo from '../../../public/TaskMasterLogo.svg'
+import TaskMasterLogo from '../../assets/TaskMasterLogo.svg'
+
 const navItems = [
   { icon: LayoutGrid, label: "Workspaces", active: true },
   // { icon: CheckSquare, label: "My Tasks" },
@@ -52,19 +52,16 @@ export default function Sidebar({ workspaces = [] }) {
 
       <div className={styles.divider} />
 
-      <div className={styles.starredSection}>
-        <span className={styles.starredLabel}>Starred Workspaces</span>
-        <ul className={styles.starredList}>
+      <div className={styles.workspaceSection}>
+        <span className={styles.workspaceLabel}>Workspaces</span>
+        <ul className={styles.workspaceList}>
           {workspaces.map((w) => (
-            <Link key={w.id} className={styles.starredItem} to={`/workspace/${w.id}`}>
+            <Link key={w.id} className={styles.workspaceItem} to={`/workspace/${w.id}`}>
               <span
-                className={styles.starredDot}
+                className={styles.workspaceDot}
                 style={{ backgroundColor: w.iconBg }}
               />
-              <span className={styles.starredName}>{w.title}</span>
-              {w.starred && (
-                <Star size={14} className={styles.starredIcon} fill="#f4b740" strokeWidth={0} />
-              )}
+              <span className={styles.workspaceName}>{w.title}</span>
             </Link>
           ))}
         </ul>

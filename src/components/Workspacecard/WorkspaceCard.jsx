@@ -1,5 +1,6 @@
-import { CheckSquare, Bug, Users, Star, MoreHorizontal } from "lucide-react";
+import { CheckSquare, Bug, Users } from "lucide-react";
 import Card from "../Card/Card";
+import { Link } from "react-router-dom";
 import styles from "./WorkspaceCard.module.css";
 
 export default function WorkspaceCard({
@@ -12,25 +13,16 @@ export default function WorkspaceCard({
   tasks = 0,
   bugs = 0,
   members = 0,
-  starred = false,
-  updatedText = "Updated recently",
   workspaceId,
   onOpen,
 }) {
   return (
-    <Card
-      as="link"
-      className={styles.cardContent}
-      to={`/workspace/${workspaceId}`}
-      onClick={onOpen}
-    >
+    <Link className={styles.link} to={`/workspace/${workspaceId}`} onClick={onOpen}>
+      <Card className={styles.card}>
       <div className={styles.cardTop}>
         <div className={styles.iconWrap} style={{ backgroundColor: iconBg }}>
           <Icon size={20} color="#fff" />
         </div>
-        {starred && (
-          <Star size={18} className={styles.starIcon} fill="#f4b740" strokeWidth={0} />
-        )}
       </div>
 
       <h3 className={styles.title}>{title}</h3>
@@ -65,10 +57,7 @@ export default function WorkspaceCard({
         </div>
       </div>
 
-      <div className={styles.footer}>
-        <span className={styles.updated}>{updatedText}</span>
-        <MoreHorizontal size={18} className={styles.moreIcon} />
-      </div>
-    </Card>
+      </Card>
+    </Link>
   );
 }

@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { Rocket, Monitor, Megaphone, Wrench } from "lucide-react";
+import { Rocket } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import Header from "../Header/Header";
 import WorkspaceCard from "../WorkspaceCard/WorkspaceCard";
+import { initialWorkspaces } from "../data";
 import styles from "./Dashboard.module.css";
 
-export const initialWorkspaces = [
+/* workspace data moved to data.js */
+/*
   {
     id: 1,
     icon: Rocket,
@@ -18,7 +20,6 @@ export const initialWorkspaces = [
     tasks: 24,
     bugs: 3,
     members: 8,
-    starred: true,
     updatedText: "Updated 2h ago",
   },
   {
@@ -32,7 +33,6 @@ export const initialWorkspaces = [
     tasks: 18,
     bugs: 5,
     members: 6,
-    starred: true,
     updatedText: "Updated 5h ago",
   },
   {
@@ -46,7 +46,6 @@ export const initialWorkspaces = [
     tasks: 12,
     bugs: 2,
     members: 4,
-    starred: false,
     updatedText: "Updated 1d ago",
   },
   {
@@ -60,7 +59,6 @@ export const initialWorkspaces = [
     tasks: 16,
     bugs: 4,
     members: 5,
-    starred: false,
     updatedText: "Updated 3h ago",
   },
 ];
@@ -72,7 +70,7 @@ export const tasks = [
   { id: 4, title: "Review responsive breakpoints", workspace: "Website Redesign", assignee: "Sneha P.", status: "In Progress", priority: "Medium", due: "Aug 28", color: "#4d8dfa" },
   { id: 5, title: "Plan Q2 social calendar", workspace: "Marketing Campaign", assignee: "Debanik P.", status: "Todo", priority: "Low", due: "Sep 02", color: "#8a6bf5" },
   { id: 6, title: "Create analytics dashboard", workspace: "Internal Tools", assignee: "Rahul Sharma", status: "Done", priority: "High", due: "Aug 23", color: "#34c98f" },
-];
+]; */
 
 export default function Dashboard() {
   const [workspaces, setWorkspaces] = useState(initialWorkspaces);

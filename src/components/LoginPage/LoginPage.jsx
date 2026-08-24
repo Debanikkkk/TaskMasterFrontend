@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Mail, Lock, Eye, EyeOff, Layers, CheckCircle2, Sparkles } from "lucide-react";
 import styles from "./LoginPage.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import TaskMasterLogo from '../../../public/TaskMasterLogo.svg'
+import TaskMasterLogo from '../../assets/TaskMasterLogo.svg'
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
