@@ -134,3 +134,6 @@
 .statsRow {
   background: #eee4d8;
 }
+.link {
+  text-decoration: none;
+}

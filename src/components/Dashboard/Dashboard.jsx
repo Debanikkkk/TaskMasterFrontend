@@ -3,7 +3,6 @@ import { Rocket } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import Header from "../Header/Header";
-// import WorkspaceCard from "../WorkspaceCard/WorkspaceCard";
 import styles from "./Dashboard.module.css";
 import WorkspaceCard from "../Workspacecard/WorkspaceCard";
 

@@ -56,7 +56,7 @@ const WorkspacePage = ({ workspaces, tasks, setTasks }) => {
         id: Date.now(),
         workspaceId: workspace.id,
         title: newTask.title.trim(),
-        workspace: workspace.title,
+        workspaceId: workspace.id,
         status: newTask.status,
         priority: newTask.priority,
         due: newTask.due || "No due date",
