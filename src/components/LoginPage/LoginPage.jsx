@@ -4,19 +4,27 @@ import styles from "./LoginPage.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import TaskMasterLogo from '../../assets/TaskMasterLogo.svg'
 
+// Enums matching User entity schema from backend
+const USER_FIELDS = [
+  { id: 'id', label: 'ID', required: false },
+  { id: 'username', label: 'Username', required: true },
+  { id: 'password', label: 'Password', required: true }
+];
+
 const LoginPage = () => {
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [remember, setRemember] = useState(false);
   const navigate=useNavigate()
   const location = useLocation();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // Hook up real auth here
     navigate('/dashboard')
-    console.log({ email, password, remember });
-
+    console.log({ email, username, password, remember });
   };
 
   return (
@@ -81,6 +89,7 @@ const LoginPage = () => {
           <div className={styles.divider} />
 
           <form onSubmit={handleSubmit} className={styles.form}>
+            {/* Email field (kept for compatibility, maps to username in backend) */}
             <div>
               <label htmlFor="email" className={styles.label}>
                 Email
@@ -93,6 +102,25 @@ const LoginPage = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
+                  className={styles.input}
+                  required
+                />
+              </div>
+            </div>
+
+            {/* Username field (matches backend User.entity.username) */}
+            <div>
+              <label htmlFor="username" className={styles.label}>
+                Username
+              </label>
+              <div className={styles.inputWrap}>
+                <Layers className={styles.inputIcon} />
+                <input
+                  id="username"
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Enter your username"
                   className={styles.input}
                   required
                 />
@@ -164,4 +192,3 @@ function Feature({ icon, label }) {
     </div>
   );
 }
-

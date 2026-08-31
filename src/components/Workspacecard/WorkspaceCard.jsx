@@ -1,10 +1,24 @@
-import { CheckSquare } from "lucide-react";
+import { Rocket, Monitor, Zap, Heart, Smartphone, Package, Cake, BarChart2 } from "lucide-react";
 import Card from "../Card/Card";
 import { Link } from "react-router-dom";
 import styles from "./WorkspaceCard.module.css";
 
+// Map icon name string to actual component
+const ICON_COMPONENTS = {
+  "Rocket": Rocket,
+  "Monitor": Monitor,
+  "Zap": Zap,
+  "Heart": Heart,
+  "Smartphone": Smartphone,
+  "Package": Package,
+  "Cake": Cake,
+  "BarChart2": BarChart2,
+  // "Chess": Chess
+};
+
 const WorkspaceCard = ({
   icon: Icon,
+  iconLabel,
   iconBg = "#6a5cf5",
   title,
   description,
@@ -14,16 +28,23 @@ const WorkspaceCard = ({
   workspaceId,
   onOpen,
 }) => {
+  // Handle both component and string name for icon
+  const IconComponent = typeof Icon === 'string' 
+    ? ICON_COMPONENTS[Icon] || Rocket 
+    : Icon;
+
   return (
     <Link className={styles.link} to={`/workspace/${workspaceId}`} onClick={onOpen}>
       <Card className={styles.card}>
       <div className={styles.cardTop}>
         <div className={styles.iconWrap} style={{ backgroundColor: iconBg }}>
-          <Icon size={20} color="#fff" />
+
+          <IconComponent size={20} color="#fff" />
         </div>
       </div>
 
       <h3 className={styles.title}>{title}</h3>
+
       <p className={styles.description}>{description}</p>
 
       <div className={styles.progressRow}>
@@ -36,15 +57,6 @@ const WorkspaceCard = ({
           style={{ width: `${progress}%`, backgroundColor: progressColor }}
         />
       </div>
-
-      {/* <div className={styles.statsRow}>
-        <div className={styles.stat}>
-          <CheckSquare size={14} className={styles.statIcon} />
-          <span className={styles.statValue}>{tasks}</span>
-          <span className={styles.statLabel}>Tasks</span>
-        </div>
-
-      </div> */}
 
       </Card>
     </Link>

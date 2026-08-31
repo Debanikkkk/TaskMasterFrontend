@@ -3,6 +3,19 @@ import { X } from "lucide-react";
 import styles from "../Header/Header.module.css";
 import pageStyles from "../Dashboard/Dashboard.module.css";
 
+// Enums matching TaskMasterBackend schema
+const TASK_STATUS = {
+  TODO: "Todo",
+  IN_PROGRESS: "In Progress",
+  DONE: "Done"
+};
+
+const TASK_PRIORITY = [
+  { value: "HIGH", label: "High" },
+  { value: "MEDIUM", label: "Medium" },
+  { value: "LOW", label: "Low" }
+];
+
 const TaskModal = ({ workspaceTitle, newTask, setNewTask, onClose, onSubmit }) => {
   const updateTask = (field, value) => {
     setNewTask({ ...newTask, [field]: value });
@@ -26,14 +39,18 @@ const TaskModal = ({ workspaceTitle, newTask, setNewTask, onClose, onSubmit }) =
           <div className={pageStyles.taskFormGrid}>
             <div>
               <label className={styles.fieldLabel} htmlFor="task-status">Status</label>
-              <select id="task-status" className={pageStyles.formSelect} value={newTask.status} onChange={(event) => updateTask("status", event.target.value)}>
-                <option value="Todo">To do</option><option value="In Progress">In progress</option><option value="Done">Completed</option>
+              <select id="task-status" className={pageStyles.formSelect} value={newTask.status || TASK_STATUS.TODO} onChange={(event) => updateTask("status", event.target.value)}>
+                {Object.entries(TASK_STATUS).map(([value, label]) => (
+                  <option key={value} value={value}>{label}</option>
+                ))}
               </select>
             </div>
             <div>
               <label className={styles.fieldLabel} htmlFor="task-priority">Priority</label>
-              <select id="task-priority" className={pageStyles.formSelect} value={newTask.priority} onChange={(event) => updateTask("priority", event.target.value)}>
-                <option>Low</option><option>Medium</option><option>High</option>
+              <select id="task-priority" className={pageStyles.formSelect} value={newTask.priority || TASK_PRIORITY[0].value} onChange={(event) => updateTask("priority", event.target.value)}>
+                {TASK_PRIORITY.map(({ value, label }) => (
+                  <option key={value} value={value}>{label}</option>
+                ))}
               </select>
             </div>
           </div>
