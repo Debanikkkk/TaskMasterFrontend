@@ -1,0 +1,177 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1rem;
+
+  background: rgba(63, 48, 40, 0.38);
+
+  backdrop-filter: blur(7px);
+
+  box-sizing: border-box;
+}
+
+.modal {
+  position: relative;
+
+  width: 100%;
+  max-width: 25rem;
+
+  padding: 2rem;
+
+  border: 1px solid #dfcfbe;
+  border-radius: 1.25rem;
+
+  background: rgba(255, 253, 249, 0.98);
+
+  box-shadow:
+    0 25px 50px -12px rgba(110, 83, 58, 0.3);
+
+  text-align: center;
+
+  box-sizing: border-box;
+
+  animation: modalEnter 180ms ease-out;
+}
+
+@keyframes modalEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.closeButton {
+  position: absolute;
+
+  top: 0.875rem;
+  right: 0.875rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2rem;
+  height: 2rem;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: transparent;
+
+  color: #a38d7d;
+
+  cursor: pointer;
+
+  transition:
+    background 150ms ease,
+    color 150ms ease;
+}
+
+.closeButton:hover {
+  background: #f3eadf;
+  color: #80533d;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 3.75rem;
+  height: 3.75rem;
+
+  margin: 0 auto 1rem;
+
+  border: 1px solid #e4cfc2;
+  border-radius: 50%;
+
+  background: #f7ebe4;
+
+  color: #a45d43;
+}
+
+.title {
+  margin: 0;
+
+  color: #211a16;
+
+  font-size: 1.4rem;
+  font-weight: 700;
+
+  letter-spacing: -0.02em;
+}
+
+.message {
+  margin: 0.625rem auto 1.5rem;
+
+  max-width: 20rem;
+
+  color: #6f594b;
+
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.tryAgainButton {
+  width: 100%;
+
+  padding: 0.75rem 1rem;
+
+  border: 0;
+  border-radius: 0.75rem;
+
+  background: linear-gradient(
+    90deg,
+    #a87557,
+    #80533d
+  );
+
+  color: #fff;
+
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 20px rgba(110, 83, 58, 0.2);
+
+  transition:
+    transform 150ms ease,
+    background 150ms ease;
+}
+
+.tryAgainButton:hover {
+  background: linear-gradient(
+    90deg,
+    #b58a6d,
+    #9d684c
+  );
+
+  transform: translateY(-1px);
+}
+
+.tryAgainButton:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+  .modal {
+    padding: 1.5rem;
+  }
+}

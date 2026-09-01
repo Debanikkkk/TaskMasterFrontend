@@ -23,6 +23,9 @@ const Sidebar = ({ workspaces = [] }) => {
 
   const handleLogout = () => {
     navigate("/", { state: { message: "You have been logged out." ,} });
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("username");
   };
 
   return (

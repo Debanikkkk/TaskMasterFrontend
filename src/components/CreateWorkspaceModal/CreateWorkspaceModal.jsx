@@ -9,14 +9,14 @@ import pageStyles from "../Dashboard/Dashboard.module.css";
 const LUCIDE_ICONS = [
   { name: "Rocket", value: "Rocket", component: Rocket },
   { name: "Monitor", value: "Monitor", component: Monitor },
-  // { name: "Github", value: "Github", component: Github },
+
   { name: "Zap", value: "Zap", component: Zap },
   { name: "Heart", value: "Heart", component: Heart },
   { name: "Smartphone", value: "Smartphone", component: Smartphone },
   { name: "Package", value: "Package", component: Package },
   { name: "Cake", value: "Cake", component: Cake },
   { name: "BarChart2", value: "BarChart2", component: BarChart2 },
-  // { name: "Chess", value: "Chess", component: Chess }
+
 ];
 
 const workspaceColors = ["#f4638a", "#4d8dfa", "#8a6bf5", "#34c98f", "#f4b740"];

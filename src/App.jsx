@@ -13,6 +13,7 @@ import {
 import {
   fetchTasks,
 } from "./redux/slices/taskSlice";
+import RegisterPage from "./components/RegisterPage/RegisterPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +40,8 @@ function App() {
           path="/workspace/:workspaceId"
           element={<WorkspacePage />}
         />
+
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
     </BrowserRouter>
   );

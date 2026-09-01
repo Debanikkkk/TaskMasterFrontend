@@ -1,30 +1,59 @@
 import { useState } from "react";
-import { Mail, Lock, Eye, EyeOff, Layers, CheckCircle2, Sparkles } from "lucide-react";
-import styles from "./LoginPage.module.css";
+import {
+  Lock,
+  Eye,
+  EyeOff,
+  Layers,
+  CheckCircle2,
+  Sparkles,
+} from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
-import TaskMasterLogo from '../../assets/TaskMasterLogo.svg'
 
-// Enums matching User entity schema from backend
-const USER_FIELDS = [
-  { id: 'id', label: 'ID', required: false },
-  { id: 'username', label: 'Username', required: true },
-  { id: 'password', label: 'Password', required: true }
-];
+import styles from "./LoginPage.module.css";
+import TaskMasterLogo from "../../assets/TaskMasterLogo.svg";
+import { api } from "../../redux/services/api";
+
+import LoginErrorModal from "../LoginErrorModal/LoginErrorModal";
 
 const LoginPage = () => {
-  const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [remember, setRemember] = useState(false);
-  const navigate=useNavigate()
+
+  const [loginError, setLoginError] = useState(false);
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+
+  const navigate = useNavigate();
   const location = useLocation();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Hook up real auth here
-    navigate('/dashboard')
-    console.log({ email, username, password, remember });
+
+    setLoginError(false);
+    setIsLoggingIn(true);
+
+    try {
+      const response = await api("/auth/login", {
+        method: "POST",
+        body: JSON.stringify({
+          username: username.trim(),
+          password,
+        }),
+      });
+
+      console.log("Login successful:", response);
+
+      localStorage.setItem("token", response.token);
+      localStorage.setItem("userId", response.userId);
+      localStorage.setItem("username", response.username);
+
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Login failed:", error);
+      setLoginError(true);
+    } finally {
+      setIsLoggingIn(false);
+    }
   };
 
   return (
@@ -37,37 +66,73 @@ const LoginPage = () => {
             "url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1600&auto=format&fit=crop')",
         }}
       />
+
       <div className={styles.backgroundTint} />
 
       {/* Logo */}
       <div className={styles.brand}>
         <div>
-                <img src={TaskMasterLogo} style={{width:'50px'}}alt="" />
-
+          <img
+            src={TaskMasterLogo}
+            style={{ width: "50px" }}
+            alt="TaskMaster"
+          />
         </div>
-        <span className={styles.brandName}>TaskMaster</span>
+
+        <span className={styles.brandName}>
+          TaskMaster
+        </span>
       </div>
 
       {/* Main content */}
       <div className={styles.content}>
-        {location.state?.message && <div className={styles.logoutMessage}>{location.state.message}</div>}
+        {location.state?.message && (
+          <div className={styles.logoutMessage}>
+            {location.state.message}
+          </div>
+        )}
+
         {/* Left copy panel */}
         <div className={styles.intro}>
           <h1 className={styles.introTitle}>
             Plan. Track.
             <br />
+
             <span className={styles.introAccent}>
               Deliver.
             </span>
           </h1>
+
           <p className={styles.introDescription}>
-            Manage personal projects and tasks in one beautiful workspace.
+            Manage personal projects and tasks in one beautiful
+            workspace.
           </p>
 
           <div className={styles.features}>
-            <Feature icon={<Layers className={styles.smallIcon} />} label="Organize Workspaces" />
-            <Feature icon={<CheckCircle2 className={styles.smallIcon} />} label="Track Progress" />
-            <Feature icon={<Sparkles className={styles.smallIcon} />} label="Ship Quality Work" />
+            <Feature
+              icon={
+                <Layers className={styles.smallIcon} />
+              }
+              label="Organize Workspaces"
+            />
+
+            <Feature
+              icon={
+                <CheckCircle2
+                  className={styles.smallIcon}
+                />
+              }
+              label="Track Progress"
+            />
+
+            <Feature
+              icon={
+                <Sparkles
+                  className={styles.smallIcon}
+                />
+              }
+              label="Ship Quality Work"
+            />
           </div>
 
           <blockquote className={styles.quote}>
@@ -80,107 +145,164 @@ const LoginPage = () => {
         {/* Login card */}
         <div className={styles.card}>
           <div className={styles.cardHeader}>
-                <img src={TaskMasterLogo} style={{width:'100px'}}alt="" />
+            <img
+              src={TaskMasterLogo}
+              style={{ width: "100px" }}
+              alt="TaskMaster"
+            />
 
-            <h2 className={styles.cardTitle}>Welcome Back</h2>
-            <p className={styles.cardSubtitle}>Sign in to continue to your workspace</p>
+            <h2 className={styles.cardTitle}>
+              Welcome Back
+            </h2>
+
+            <p className={styles.cardSubtitle}>
+              Sign in to continue to your workspace
+            </p>
           </div>
 
           <div className={styles.divider} />
 
-          <form onSubmit={handleSubmit} className={styles.form}>
-            {/* Email field (kept for compatibility, maps to username in backend) */}
+          <form
+            onSubmit={handleSubmit}
+            className={styles.form}
+          >
+            {/* Username */}
             <div>
-              <label htmlFor="email" className={styles.label}>
+              <label
+                htmlFor="username"
+                className={styles.label}
+              >
                 Email
               </label>
-              <div className={styles.inputWrap}>
-                <Mail className={styles.inputIcon} />
-                <input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="you@example.com"
-                  className={styles.input}
-                  required
-                />
-              </div>
-            </div>
 
-            {/* Username field (matches backend User.entity.username) */}
-            <div>
-              <label htmlFor="username" className={styles.label}>
-                Username
-              </label>
               <div className={styles.inputWrap}>
-                <Layers className={styles.inputIcon} />
+                <Layers
+                  className={styles.inputIcon}
+                />
+
                 <input
                   id="username"
                   type="text"
                   value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  placeholder="Enter your username"
+                  onChange={(e) =>
+                    setUsername(e.target.value)
+                  }
+                  placeholder="Enter your Email"
                   className={styles.input}
                   required
+                  autoComplete="username"
                 />
               </div>
             </div>
 
+            {/* Password */}
             <div>
-              <label htmlFor="password" className={styles.label}>
+              <label
+                htmlFor="password"
+                className={styles.label}
+              >
                 Password
               </label>
+
               <div className={styles.inputWrap}>
-                <Lock className={styles.inputIcon} />
+                <Lock
+                  className={styles.inputIcon}
+                />
+
                 <input
                   id="password"
-                  type={showPassword ? "text" : "password"}
+                  type={
+                    showPassword
+                      ? "text"
+                      : "password"
+                  }
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) =>
+                    setPassword(e.target.value)
+                  }
                   placeholder="Enter your password"
                   className={`${styles.input} ${styles.passwordInput}`}
                   required
+                  autoComplete="current-password"
                 />
+
                 <button
                   type="button"
-                  onClick={() => setShowPassword((s) => !s)}
+                  onClick={() =>
+                    setShowPassword(
+                      (current) => !current
+                    )
+                  }
                   className={styles.passwordToggle}
-                  aria-label={showPassword ? "Hide password" : "Show password"}
+                  aria-label={
+                    showPassword
+                      ? "Hide password"
+                      : "Show password"
+                  }
                 >
-                  {showPassword ? <EyeOff className={styles.smallIcon} /> : <Eye className={styles.smallIcon} />}
+                  {showPassword ? (
+                    <EyeOff
+                      className={styles.smallIcon}
+                    />
+                  ) : (
+                    <Eye
+                      className={styles.smallIcon}
+                    />
+                  )}
                 </button>
               </div>
             </div>
 
-
+            {/* Submit */}
             <button
               type="submit"
               className={styles.submitButton}
+              disabled={isLoggingIn}
             >
-              Sign In
+              {isLoggingIn
+                ? "Signing in..."
+                : "Sign In"}
             </button>
           </form>
 
           <div className={styles.socialDivider}>
             <div className={styles.dividerLine} />
-            <span className={styles.dividerLabel}>or</span>
+
+            <span className={styles.dividerLabel}>
+              or
+            </span>
+
             <div className={styles.dividerLine} />
           </div>
 
           <p className={styles.signupText}>
             Don't have an account?{" "}
-            <a href="#" className={styles.link}>
+
+            <button
+              type="button"
+              className={styles.linkButton}
+              onClick={() =>
+                navigate("/register")
+              }
+            >
               Sign up
-            </a>
+            </button>
           </p>
         </div>
       </div>
+
+      {/* Login Error Modal */}
+      {loginError && (
+        <LoginErrorModal
+          onClose={() => setLoginError(false)}
+        />
+      )}
     </div>
   );
 };
 
 export default LoginPage;
+
 
 function Feature({ icon, label }) {
   return (
@@ -188,7 +310,10 @@ function Feature({ icon, label }) {
       <div className={styles.featureIcon}>
         {icon}
       </div>
-      <span className={styles.featureLabel}>{label}</span>
+
+      <span className={styles.featureLabel}>
+        {label}
+      </span>
     </div>
   );
 }

@@ -8,28 +8,58 @@ import Header from "../Header/Header";
 import Card from "../Card/Card";
 import TaskModal from "../TaskModal/TaskModal";
 import TaskFilters from "../TaskFilters/TaskFilters";
-import TaskComp from "../TaskComp/TaskComp";
 import styles from "../Dashboard/Dashboard.module.css";
+import TaskComp from "../TaskComp/TaskComp";
 
-import { updateTask } from "../../redux/slices/taskSlice";
+import {
+  fetchWorkspaces,
+} from "../../redux/slices/workspaceSlice";
+
+import {
+  fetchTasks,
+  createTask,
+  updateTask,
+} from "../../redux/slices/taskSlice";
+
 
 const WorkspacePage = () => {
   const { workspaceId } = useParams();
   const dispatch = useDispatch();
 
-  const { workspaces, loading: workspaceLoading } = useSelector(
-    (state) => state.workspaces
-  );
+  const {
+    workspaces,
+    loading: workspaceLoading,
+  } = useSelector((state) => state.workspaces);
 
-  const { tasks, loading: taskLoading } = useSelector(
-    (state) => state.tasks
-  );
+  const {
+    tasks,
+    loading: taskLoading,
+  } = useSelector((state) => state.tasks);
 
   const [taskFilter, setTaskFilter] = useState("All");
   const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
 
+  // const [newTask, setNewTask] = useState({
+  //   title: "",
+  //   description: "",
+  //   status: "Todo",
+  //   priority: "Medium",
+  //   due: "",
+  // });
+
+  // // Load data when page mounts
+  // useEffect(() => {
+  //   if (workspaces.length === 0) {
+  //     dispatch(fetchWorkspaces());
+  //   }
+
+  //   if (tasks.length === 0) {
+  //     dispatch(fetchTasks());
+  //   }
+  // }, [dispatch, workspaces.length, tasks.length]);
+
   const workspace = workspaces.find(
-    (workspace) => String(workspace.id) === workspaceId
+    (item) => String(item.id) === workspaceId
   );
 
   const workspaceTasks = tasks.filter(
@@ -43,17 +73,21 @@ const WorkspacePage = () => {
           (task) => task.status === taskFilter
         );
 
+  const taskCount = (status) =>
+    workspaceTasks.filter(
+      (task) => task.status === status
+    ).length;
+
   const taskCounts = {
     all: workspaceTasks.length,
-    todo: workspaceTasks.filter((task) => task.status === "Todo").length,
-    inProgress: workspaceTasks.filter(
-      (task) => task.status === "In Progress"
-    ).length,
-    done: workspaceTasks.filter((task) => task.status === "Done").length,
+    todo: taskCount("Todo"),
+    inProgress: taskCount("In Progress"),
+    done: taskCount("Done"),
   };
 
+  // UPDATE TASK STATUS
   const handleStatusChange = (taskId, status) => {
-    const task = tasks.find((task) => task.id === taskId);
+    const task = tasks.find((item) => item.id === taskId);
 
     if (!task) return;
 
@@ -68,8 +102,9 @@ const WorkspacePage = () => {
     );
   };
 
+  // ESCAPE TO CLOSE MODAL
   useEffect(() => {
-    if (!isTaskModalOpen) return;
+    if (!isTaskModalOpen) return undefined;
 
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
@@ -84,6 +119,42 @@ const WorkspacePage = () => {
     };
   }, [isTaskModalOpen]);
 
+  const closeTaskModal = () => {
+    setIsTaskModalOpen(false);
+
+    setNewTask({
+      title: "",
+      description: "",
+      status: "Todo",
+      priority: "Medium",
+      due: "",
+    });
+  };
+
+  // CREATE TASK
+  const handleTaskSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!newTask.title.trim()) return;
+
+    try {
+      await dispatch(
+        createTask({
+          workspaceId: workspace.id,
+          title: newTask.title.trim(),
+          description: newTask.description,
+          status: newTask.status,
+          priority: newTask.priority,
+          due: newTask.due || null,
+        })
+      ).unwrap();
+
+      closeTaskModal();
+    } catch (error) {
+      console.error("Failed to create task:", error);
+    }
+  };
+
   if (workspaceLoading || taskLoading) {
     return (
       <div className={styles.page}>
@@ -93,9 +164,11 @@ const WorkspacePage = () => {
           <Header />
 
           <div className={styles.content}>
-            <div className={styles.emptyState}>
-              Loading workspace...
-            </div>
+            <section className={styles.tasksPanel}>
+              <div className={styles.emptyState}>
+                Loading workspace...
+              </div>
+            </section>
           </div>
         </main>
       </div>
@@ -149,7 +222,10 @@ const WorkspacePage = () => {
         />
 
         <div className={styles.content}>
-          <section className={styles.workspaceSection}>
+          <section
+            className={styles.workspaceSection}
+            aria-labelledby="workspace-tasks-title"
+          >
             <div className={styles.tasksHeader}>
               <div>
                 <Link
@@ -160,7 +236,10 @@ const WorkspacePage = () => {
                   All workspaces
                 </Link>
 
-                <h2 className={styles.sectionTitle}>
+                <h2
+                  id="workspace-tasks-title"
+                  className={styles.sectionTitle}
+                >
                   {workspace.title}
                 </h2>
 
@@ -171,6 +250,7 @@ const WorkspacePage = () => {
 
               <button
                 className={styles.addTaskButton}
+                type="button"
                 onClick={() => setIsTaskModalOpen(true)}
               >
                 <Plus size={15} />
@@ -186,19 +266,19 @@ const WorkspacePage = () => {
               />
 
               <div className={styles.taskList}>
-                {visibleTasks.length === 0 ? (
+                {visibleTasks.length === 0 && (
                   <div className={styles.emptyState}>
                     No tasks in this workspace yet.
                   </div>
-                ) : (
-                  visibleTasks.map((task) => (
-                    <TaskComp
-                      key={task.id}
-                      task={task}
-                      onStatusChange={handleStatusChange}
-                    />
-                  ))
                 )}
+
+                {visibleTasks.map((task) => (
+                  <TaskComp
+                    key={task.id}
+                    task={task}
+                    onStatusChange={handleStatusChange}
+                  />
+                ))}
               </div>
             </Card>
           </section>
@@ -206,10 +286,10 @@ const WorkspacePage = () => {
 
         {isTaskModalOpen && (
           <TaskModal
-            workspaceId={workspace.id}
-            workspaceTitle={workspace.title}
-            onClose={() => setIsTaskModalOpen(false)}
-          />
+  workspaceId={workspace.id}
+  workspaceTitle={workspace.title}
+  onClose={closeTaskModal}
+/>
         )}
       </main>
     </div>
